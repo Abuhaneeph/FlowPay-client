@@ -13,17 +13,17 @@ import type { Token } from '@/lib/Tokens/tokens.ts';
 
 // Contract addresses - replace with your actual contract addresses
 export const CONTRACT_ADDRESSES = {
-  swapAddress: '0x013b0CA4E4559339F43682B7ac05479eD48E694f',
-  priceFeedAddress: '0x6a257B0a406eB762C105130314dB15B1a29AbC4e',
-  afriStableAddress: '0x6615c93A524E2B2daa36276Ac418D3cB60d2DC60',
-  savingAddress: '0x1CC25BCD029E6E0Bf9767216A885A29Eb79f93f0'
+  swapAddress: '0x96dAc9d139c324ef549b755b82cf161dB26aBB07',
+  priceFeedAddress: '0x48686EA995462d611F4DA0d65f90B21a30F259A5',
+  afriStableAddress: '0xCcD4D22E24Ab5f9FD441a6E27bC583d241554a3c',
+  savingAddress: '0x2Efddc5a4FEc6a4308c7206B0E0E9b3898520108'
 };
 
 // Core Testnet chain ID
 const CORE_CHAIN_ID = 1114;
 
 // Thirdweb RPC endpoint
-const THIRDWEB_RPC_URL = `https://rpc.test2.btcs.network`;
+const THIRDWEB_RPC_URL = `https://2810.rpc.thirdweb.com/${import.meta.env.VITE_THIRDWEB_CLIENT_ID}`;
 
 // Enhanced context interface with Thirdweb integration
 interface ContractInstancesContextType {

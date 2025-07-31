@@ -1,27 +1,28 @@
 import { createConfig, http } from 'wagmi';
+import { liskSepolia } from 'wagmi/chains';
 import { injected, metaMask, walletConnect } from 'wagmi/connectors';
 
-// Define Core Testnet
-const coreTestnet = {
-  id: 1115,
-  name: 'Core Testnet',
+// If Lisk Sepolia is not available in wagmi/chains, define it manually
+const liskSepoliaCustom = {
+  id: 4202,
+  name: 'Lisk Sepolia Testnet',
   nativeCurrency: {
     decimals: 18,
-    name: 'Core',
-    symbol: 'tCORE',
+    name: 'Sepolia Ether',
+    symbol: 'ETH',
   },
   rpcUrls: {
     default: {
-      http: ['https://rpc.test2.btcs.network'],
+      http: ['https://rpc.sepolia-api.lisk.com'],
     },
     public: {
-      http: ['https://rpc.test2.btcs.network'],
+      http: ['https://rpc.sepolia-api.lisk.com'],
     },
   },
   blockExplorers: {
     default: {
-      name: 'Core Testnet Explorer',
-      url: 'https://scan.test2.btcs.network',
+      name: 'Lisk Sepolia Explorer',
+      url: 'https://sepolia-blockscout.lisk.com',
     },
   },
   testnet: true,
@@ -29,14 +30,15 @@ const coreTestnet = {
 
 // Create wagmi config
 export const wagmiConfig = createConfig({
-  chains: [coreTestnet],
+  chains: [liskSepoliaCustom], // Use liskSepolia if available in wagmi/chains
   connectors: [
     injected(),
     metaMask(),
+    // Add WalletConnect if you have a project ID
     // walletConnect({ projectId: 'your-project-id' }),
   ],
   transports: {
-    [coreTestnet.id]: http(),
+    [liskSepoliaCustom.id]: http(),
   },
 });
 

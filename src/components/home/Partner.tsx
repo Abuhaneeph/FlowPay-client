@@ -9,10 +9,10 @@ const TrustedPartners: React.FC = () => {
 
   const partners = [
     {
-      name: "Morph",
+      name: "Lisk",
       description: "Blockchain Infrastructure",
-      logo: "https://ml.globenewswire.com/Resource/Download/b7203bf8-dd28-4843-b783-12dff9c778c0",
-      website: "https://www.morphl2.io/",
+      logo: "https://storage.googleapis.com/accesswire/logos/subaccounts/53774.png?v=2",
+      website: "https://lisk.com",
      
     },
     {
@@ -62,9 +62,9 @@ const TrustedPartners: React.FC = () => {
     gradient: "from-blue-400 to-cyan-500"
   },
   {
-    icon: () => <img src="https://ml.globenewswire.com/Resource/Download/b7203bf8-dd28-4843-b783-12dff9c778c0" alt="Morph" className="w-10 h-10 object-contain" />,
+    icon: () => <img src="https://sepolia-blockscout.lisk.com/assets/configs/network_icon_dark.svg" alt="Lisk" className="w-10 h-10 object-contain" />,
     title: "Testnet Deployed",
-    description: "MVP live on Morph Holesky testnet with core features",
+    description: "MVP live on Lisk Sepolia testnet with core features",
     color: "text-purple-600",
     bg: "bg-purple-100",
     gradient: "from-purple-400 to-pink-500"
