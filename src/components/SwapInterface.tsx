@@ -18,7 +18,7 @@ const roundToFiveDecimalPlaces = (num) => {
 const SwapInterface = () => {
   const { isConnected, SWAP_CONTRACT_INSTANCE, PRICEAPI_CONTRACT_INSTANCE, TEST_TOKEN_CONTRACT_INSTANCE, fetchBalance, address } = useContractInstances()
   const [activeTab, setActiveTab] = useState('swap');
-  const [fromToken, setFromToken] = useState('ETH');
+  const [fromToken, setFromToken] = useState('TCORE2');
    
   const [toToken, setToToken] = useState('AFR');
    const token1Address = tokens.find(t => t.symbol === fromToken)?.address;
@@ -53,7 +53,7 @@ const [poolPrices, setPoolPrices] = useState<{ [key: string]: string }>({});
 
  useEffect(() => {
   const fetchPrices = async () => {
-    const pools = getAllLiquidityPools(); // e.g., ["ETH/USDC", "ETH/AFRC"]
+    const pools = getAllLiquidityPools(); // e.g., ["TCORE2/USDC", "TCORE2/AFRC"]
     console.log("Fetching prices for pools:", pools);
 
     const prices: { [key: string]: string } = {};
@@ -285,19 +285,19 @@ useEffect(()=>{
 
 
   const exchangeRates = {
-    'ETH-AFRC': 2150,
+    'TCORE2-AFRC': 2150,
     'USDC-AFRC': 1.00,
-    'AFRC-ETH': 0.000465,
+    'AFRC-TCORE2': 0.000465,
     'AFRC-USDC': 1.00,
-    'ETH-USDC': 2150,
-    'USDC-ETH': 0.000465,
+    'TCORE2-USDC': 2150,
+    'USDC-TCORE2': 0.000465,
   };
 
 
 
    const SwapToken=async()=>{
     
-    if(fromToken == 'ETH'){
+    if(fromToken == 'TCORE2'){
       try{
         const SWAP_CONTRACT= await SWAP_CONTRACT_INSTANCE();  
        const SWAP =await SWAP_CONTRACT.swap(token1Address,token2Address,AmountOneInWei,{
@@ -321,7 +321,7 @@ useEffect(()=>{
       setToken2Amount(null)
        console.log(error)
       }
-     }else if(toToken == 'ETH' ){
+     }else if(toToken == 'TCORE2' ){
       try{
         const SWAP_CONTRACT= await SWAP_CONTRACT_INSTANCE();  
        const SWAP =await SWAP_CONTRACT.swap(token1Address,token2Address,AmountOneInWei); 
@@ -689,7 +689,7 @@ useEffect(()=>{
 
          {/* Approve Button */}
 
-          {fromToken != 'ETH' && (
+          {fromToken != 'TCORE2' && (
         <button
         onClick={ApproveTokenOne}
          disabled={isApproveOne || hasApprovedOne || !token1Amount}
@@ -709,7 +709,7 @@ useEffect(()=>{
     !token1Amount ||
     parseFloat(token1Amount) <= 0 ||
     isSwapping ||
-    (fromToken !== 'ETH' && !hasApprovedOne)
+    (fromToken !== 'TCORE2' && !hasApprovedOne)
   }
   className="w-full mt-6 bg-gradient-to-r from-terracotta to-sage text-white py-4 rounded-xl font-semibold hover:shadow-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
 >
@@ -719,7 +719,7 @@ useEffect(()=>{
     ? 'Swapping...'
     : !token1Amount
     ? 'Enter amount'
-    : fromToken !== 'ETH' && !hasApprovedOne
+    : fromToken !== 'TCORE2' && !hasApprovedOne
     ? `Approve ${fromToken} First`
     : 'Swap Tokens'}
 </button>

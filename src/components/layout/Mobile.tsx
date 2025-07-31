@@ -1,4 +1,6 @@
 import React from 'react';
+// Ensure the JSX runtime is set to 'react' in your tsconfig.json or add the pragma below if needed
+/** @jsxImportSource react */
 import { createThirdwebClient } from 'thirdweb';
 import { ConnectButton } from 'thirdweb/react';
 import {
@@ -152,7 +154,7 @@ const MobileSidebar = ({
                   detailsButton={{
                     className: "!w-full !bg-green-600 !text-white !font-medium !px-4 !py-3 !rounded-lg",
                     displayBalanceToken: {
-                      2810: "0x0000000000000000000000000000000000000000"
+                      1114: "0x0000000000000000000000000000000000000000"
                     }
                   }}
                   connectModal={{
@@ -160,7 +162,7 @@ const MobileSidebar = ({
                     showThirdwebBranding: false,
                   }}
                   switchButton={{
-                    label: "Switch to Morph Holesky"
+                    label: "Switch to Core Testnet"
                   }}
                 />
                 

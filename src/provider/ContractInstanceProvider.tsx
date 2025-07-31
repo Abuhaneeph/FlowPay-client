@@ -19,11 +19,11 @@ export const CONTRACT_ADDRESSES = {
   savingAddress: '0x1CC25BCD029E6E0Bf9767216A885A29Eb79f93f0'
 };
 
-// Morph Holesky chain ID
-const MORPH_CHAIN_ID = 2810;
+// Core Testnet chain ID
+const CORE_CHAIN_ID = 1114;
 
 // Thirdweb RPC endpoint
-const THIRDWEB_RPC_URL = `https://rpc-quicknode-holesky.morphl2.io`;
+const THIRDWEB_RPC_URL = `https://rpc.test2.btcs.network`;
 
 // Enhanced context interface with Thirdweb integration
 interface ContractInstancesContextType {
@@ -71,7 +71,7 @@ export const ContractInstanceProvider: React.FC<{ children: ReactNode }> = ({ ch
   // Derived state
   const address = account?.address || null;
   const isConnected = !!account && !!wallet;
-  const isCorrectNetwork = activeChain?.id === MORPH_CHAIN_ID;
+  const isCorrectNetwork = activeChain?.id === CORE_CHAIN_ID;
 
   // Network switching function
   const switchToMorphNetwork = async (): Promise<boolean> => {
@@ -80,29 +80,29 @@ export const ContractInstanceProvider: React.FC<{ children: ReactNode }> = ({ ch
         throw new Error('Ethereum provider not available');
       }
 
-      console.log('Attempting to switch to Morph Holesky network...');
+      console.log('Attempting to switch to Core Testnet network...');
       
       // First, try to switch to the existing network
       try {
         await window.ethereum.request({
           method: 'wallet_switchEthereumChain',
-          params: [{ chainId: `0x${MORPH_CHAIN_ID.toString(16)}` }], // Convert 2810 to hex: 0xAFA
+          params: [{ chainId: `0x${CORE_CHAIN_ID.toString(16)}` }], // Convert 2810 to hex: 0xAFA
         });
-        console.log('✅ Successfully switched to Morph Holesky network');
+        console.log('✅ Successfully switched to Core Testnet network');
         return true;
       } catch (switchError: any) {
         // If network doesn't exist (error code 4902), add it
         if (switchError.code === 4902) {
-          console.log('Morph Holesky network not found, adding it...');
+          console.log('Core Testnet network not found, adding it...');
           await window.ethereum.request({
             method: 'wallet_addEthereumChain',
             params: [
               {
-                chainId: `0x${MORPH_CHAIN_ID.toString(16)}`, // 0xAFA
-                chainName: 'Morph Holesky',
+                chainId: `0x${CORE_CHAIN_ID.toString(16)}`, // 0xAFA
+                chainName: 'Core Testnet',
                 nativeCurrency: {
                   name: 'Ethereum',
-                  symbol: 'ETH',
+                  symbol: 'TCORE2',
                   decimals: 18,
                 },
                 rpcUrls: [THIRDWEB_RPC_URL],
@@ -110,7 +110,7 @@ export const ContractInstanceProvider: React.FC<{ children: ReactNode }> = ({ ch
               },
             ],
           });
-          console.log('✅ Successfully added and switched to Morph Holesky network');
+          console.log('✅ Successfully added and switched to Core Testnet network');
           return true;
         }
         throw switchError;
@@ -229,15 +229,15 @@ export const ContractInstanceProvider: React.FC<{ children: ReactNode }> = ({ ch
             try {
               // Ensure we're on the correct chain
               const currentChain = await wallet.getChain();
-              if (currentChain.id !== MORPH_CHAIN_ID) {
+              if (currentChain.id !== CORE_CHAIN_ID) {
                 console.log('Switching to correct chain...');
                 await wallet.switchChain({
-                  id: MORPH_CHAIN_ID,
-                  name: "Morph Holesky",
+                  id: CORE_CHAIN_ID,
+                  name: "Core Testnet",
                   rpc: THIRDWEB_RPC_URL,
                   nativeCurrency: {
-                    name: "ETH",
-                    symbol: "ETH",
+                    name: "TCORE2",
+                    symbol: "TCORE2",
                     decimals: 18
                   }
                 });
@@ -262,14 +262,14 @@ export const ContractInstanceProvider: React.FC<{ children: ReactNode }> = ({ ch
             const network = await web3Provider.getNetwork();
             console.log('Current network:', network.chainId);
             
-            if (Number(network.chainId) === MORPH_CHAIN_ID) {
+            if (Number(network.chainId) === CORE_CHAIN_ID) {
               setSigner(signer);
               setConnectionError(null);
               console.log('✅ EIP-1193 signer created successfully');
               return;
             } else {
-              console.warn('Wrong network detected:', network.chainId, 'expected:', MORPH_CHAIN_ID);
-              setNetworkError(`Wrong network. Expected chain ID: ${MORPH_CHAIN_ID}, got: ${network.chainId}`);
+              console.warn('Wrong network detected:', network.chainId, 'expected:', CORE_CHAIN_ID);
+              setNetworkError(`Wrong network. Expected chain ID: ${CORE_CHAIN_ID}, got: ${network.chainId}`);
             }
           }
 
@@ -314,11 +314,11 @@ export const ContractInstanceProvider: React.FC<{ children: ReactNode }> = ({ ch
   // Enhanced effect to handle network changes with automatic switching
   useEffect(() => {
     const handleNetworkChange = async () => {
-      if (isConnected && activeChain?.id && activeChain.id !== MORPH_CHAIN_ID) {
-        console.log(`Wrong network detected: ${activeChain.id}, expected: ${MORPH_CHAIN_ID}`);
+      if (isConnected && activeChain?.id && activeChain.id !== CORE_CHAIN_ID) {
+        console.log(`Wrong network detected: ${activeChain.id}, expected: ${CORE_CHAIN_ID}`);
         
         // Show network error immediately
-        setNetworkError(`Connected to wrong network. Please switch to Morph Holesky (Chain ID: ${MORPH_CHAIN_ID}) or click the switch button.`);
+        setNetworkError(`Connected to wrong network. Please switch to Core Testnet (Chain ID: ${CORE_CHAIN_ID}) or click the switch button.`);
         
         // Optionally try to switch automatically (uncomment if you want auto-switch)
         // const switched = await switchToMorphNetwork();
@@ -356,7 +356,7 @@ export const ContractInstanceProvider: React.FC<{ children: ReactNode }> = ({ ch
       }
 
       // Check if it's the native token
-      if (token.symbol === 'ETH') {
+      if (token.symbol === 'TCORE2') {
         return nativeBalance || '0';
       }
 
@@ -449,7 +449,7 @@ export const ContractInstanceProvider: React.FC<{ children: ReactNode }> = ({ ch
       }
 
       if (!isCorrectNetwork) {
-        throw new Error(`Wrong network. Please switch to chain ID: ${MORPH_CHAIN_ID}`);
+        throw new Error(`Wrong network. Please switch to chain ID: ${CORE_CHAIN_ID}`);
       }
 
       // Force reconnection

@@ -33,7 +33,7 @@ interface LiquidityPool {
 
 const LiquidityInterface = ({ onBackToSwap }) => {
   const [activeTab, setActiveTab] = useState('add');
-  const [token1, setToken1] = useState('ETH');
+  const [token1, setToken1] = useState('TCORE2');
   const [token2, setToken2] = useState('AFR');
   const token1Address = tokens.find(t => t.symbol === token1)?.address;
   const token2Address = tokens.find(t => t.symbol === token2)?.address;
@@ -651,7 +651,7 @@ useEffect(() => {
 
 const isNativeToken = (tokenAddress) => {
   const nativeToken = tokens.find(token => token.address === tokenAddress);
-  if (nativeToken && nativeToken.symbol === 'ETH') {
+  if (nativeToken && nativeToken.symbol === 'TCORE2') {
     return true;
   }
   return false;

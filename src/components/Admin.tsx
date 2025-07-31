@@ -160,7 +160,7 @@ const CREATE_POOL = async () => {
 
 // Set Price Component
 const SetPriceComponent = () => {
-  const [baseToken, setBaseToken] = useState('ETH');
+  const [baseToken, setBaseToken] = useState('TCORE2');
     const tokenAddress = tokens.find(t => t.symbol === baseToken)?.address;
 
   const [price, setPrice] = useState('');

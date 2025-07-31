@@ -1,27 +1,27 @@
 import { createConfig, http } from 'wagmi';
 import { injected, metaMask, walletConnect } from 'wagmi/connectors';
 
-// Define Morph Holesky Testnet
-const morphHolesky = {
-  id: 920, // replace with the actual chain ID for Morph Holesky
-  name: 'Morph Holesky Testnet',
+// Define Core Testnet
+const coreTestnet = {
+  id: 1115,
+  name: 'Core Testnet',
   nativeCurrency: {
     decimals: 18,
-    name: 'Ether',
-    symbol: 'ETH',
+    name: 'Core',
+    symbol: 'tCORE',
   },
   rpcUrls: {
     default: {
-      http: [`https://2810.rpc.thirdweb.com/${import.meta.env.VITE_THIRDWEB_CLIENT_ID}`], // replace with actual Morph Holesky RPC URL
+      http: ['https://rpc.test2.btcs.network'],
     },
     public: {
-      http: [`https://2810.rpc.thirdweb.com/${import.meta.env.VITE_THIRDWEB_CLIENT_ID}`], // same here
+      http: ['https://rpc.test2.btcs.network'],
     },
   },
   blockExplorers: {
     default: {
-      name: 'Morph Holesky Explorer',
-      url: 'https://explorer-holesky.morphl2.io', // replace with actual explorer URL
+      name: 'Core Testnet Explorer',
+      url: 'https://scan.test2.btcs.network',
     },
   },
   testnet: true,
@@ -29,14 +29,14 @@ const morphHolesky = {
 
 // Create wagmi config
 export const wagmiConfig = createConfig({
-  chains: [morphHolesky],
+  chains: [coreTestnet],
   connectors: [
     injected(),
     metaMask(),
     // walletConnect({ projectId: 'your-project-id' }),
   ],
   transports: {
-    [morphHolesky.id]: http(),
+    [coreTestnet.id]: http(),
   },
 });
 

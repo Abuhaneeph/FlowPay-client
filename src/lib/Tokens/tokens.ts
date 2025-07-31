@@ -14,107 +14,100 @@ export interface Token {
 // Token array
 const tokens: Token[] = [
   { 
-    id:1,
-    symbol: 'ETH', 
-    name: 'Ethereum', 
+    id: 1,
+    symbol: 'TCORE2', 
+    name: 'Test Core', 
     balance: 0.5,
-    address: '0x2A238f0d67B78F43F2EE235Ea1A25446dB74d84C', // Replace with your native token address
-    pool: ["AFR","USDT"],
-    poolId: [1,2],
+    address: '0xdcc703c0E500B653Ca82273B7BFAd8045D85a470', // Native token address
+    pool: ["AFR", "USDT"],
+    poolId: [1, 2],
     img: "https://assets.pancakeswap.finance/web/native/1.png"
   },
   { 
-    id:2,
+    id: 2,
     symbol: 'USDT', 
     name: 'USDT', 
     balance: 2,
-    address: '0x7dd1aD415F58D91BbF76BcC2640cc6FdD44Aa94b', // Updated with deployed address
-    pool: ["ETH","AFX"],
-    poolId: [2,6],
-    img:'https://coin-images.coingecko.com/coins/images/39963/large/usdt.png?1724952731'
+    address: '0x6765e788d5652E22691C6c3385c401a9294B9375', // Correct USDT address
+    pool: ["TCORE2", "AFX"],
+    poolId: [2, 6],
+    img: 'https://coin-images.coingecko.com/coins/images/39963/large/usdt.png?1724952731'
   },
-   { 
-    id:3,
+  { 
+    id: 3,
     symbol: 'WETH', 
     name: 'Wrapped Ethereum', 
     balance: 1250,
-    address: '0xaC56E37f70407f279e27cFcf2E31EdCa888EaEe4', // Updated with deployed address
+    address: '0x25a8e2d1e9883D1909040b6B3eF2bb91feAB2e2f', // Correct WETH address
     pool: [],
     poolId: [],
     img: 'https://coin-images.coingecko.com/coins/images/39810/large/weth.png?1724139790',
-        
   }, 
-
   { 
-    id:4,
+    id: 4,
     symbol: 'AFR', 
     name: 'AfriRemit', 
     balance: 1250,
-    address: '0x48686EA995462d611F4DA0d65f90B21a30F259A5', // Updated with deployed address
-    pool: ["ETH"],
+    address: '0x48D2210bd4E72c741F74E6c0E8f356b2C36ebB7A', // Correct AFR address
+    pool: ["TCORE2"],
     poolId: [1],
-    img: 'https://cdn.moralis.io/eth/0x6b3595068778dd592e39a122f4f5a5cf09c90fe2.png',
-        
+    img: 'https://cdn.moralis.io/TCORE2/0x6b3595068778dd592e39a122f4f5a5cf09c90fe2.png',
   },
-     { 
-    id:5,
+  { 
+    id: 5,
     symbol: 'AFX', 
     name: 'AfriStable', 
     balance: 1250,
-    address: '0x8F11F588B1Cc0Bc88687F7d07d5A529d34e5CD84', // Updated with deployed address
+    address: '0xCcD4D22E24Ab5f9FD441a6E27bC583d241554a3c', // Correct AFX address
     pool: ["cZAR", "USDT"],
-    poolId: [5,6],
+    poolId: [5, 6],
     img: 'https://www.xe.com/svgs/flags/ngn.static.svg',
-        
   },
-   { 
-    id:6,
+  { 
+    id: 6,
     symbol: 'cNGN', 
     name: 'Crypto Naira', 
     balance: 1250,
-    address: '0xC0c182d9895882C61C1fC1DF20F858e5E29a4f71', // Updated with deployed address
+    address: '0x7dd1aD415F58D91BbF76BcC2640cc6FdD44Aa94b', // Correct cNGN address
     pool: ["cZAR"],
     poolId: [3],
     img: 'https://www.xe.com/svgs/flags/ngn.static.svg',
-        
   },
-   { 
-    id:7,
+  { 
+    id: 7,
     symbol: 'cZAR', 
     name: 'Crypto South African Rand', 
     balance: 1250,
-    address: '0x2Efddc5a4FEc6a4308c7206B0E0E9b3898520108', // Updated with deployed address
-    pool: ["cNGN","AFX"],
-    poolId: [3,5],
+    address: '0xaC56E37f70407f279e27cFcf2E31EdCa888EaEe4', // Correct cZAR address
+    pool: ["cNGN", "AFX"],
+    poolId: [3, 5],
     img: 'https://www.xe.com/svgs/flags/zar.static.svg',
-        
   },
-   { 
-    id:8,
+  { 
+    id: 8,
     symbol: 'cGHS', 
     name: 'Crypto Ghanaian Cedi', 
     balance: 1250,
-    address: '0xCcD4D22E24Ab5f9FD441a6E27bC583d241554a3c', // Updated with deployed address
+    address: '0x8F11F588B1Cc0Bc88687F7d07d5A529d34e5CD84', // Correct cGHS address
     pool: ["cKES"],
     poolId: [4],
-    
     img: 'https://www.xe.com/svgs/flags/ghs.static.svg',
-        
   },
-   { 
-    id:9,
+  { 
+    id: 9,
     symbol: 'cKES', 
     name: 'Crypto Kenyan Shilling', 
     balance: 1250,
-    address: '0x2B2068a831e7C7B2Ac4D97Cd293F934d2625aB69', // Updated with deployed address
+    address: '0xaC56E37f70407f279e27cFcf2E31EdCa888EaEe4', // Correct cKES address
     pool: ["cGHS"],
     poolId: [4],
     img: 'https://www.xe.com/svgs/flags/kes.static.svg',
-        
   },
 ];
 
 export default tokens;
+
+
 
 
 // Updated addresses array for reference:
