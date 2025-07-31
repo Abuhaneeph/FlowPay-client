@@ -90,7 +90,7 @@ const FaucetComponent = () => {
                   className="bg-white border border-stone-300 rounded-lg px-3 py-2 font-medium w-full sm:w-auto min-w-[120px] text-base"
                 >
                   {tokens
-                    .filter(token => token.symbol !== 'TCORE2' && token.symbol !== 'AFX')
+                    .filter(token => token.symbol !== 'ETH' && token.symbol !== 'AFX')
                     .map(token => (
                       <option key={token.symbol} value={token.symbol}>
                         {token.symbol}
