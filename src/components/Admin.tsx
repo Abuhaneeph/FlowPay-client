@@ -173,7 +173,12 @@ const SetPriceComponent = () => {
         try{
           
            const PRICE_CONTRACT=await PRICEAPI_CONTRACT_INSTANCE()
+
+           
+            const priceFeedAddress = await PRICE_CONTRACT.getNativeToken();
+            console.log(`Price Feed Address: ${priceFeedAddress}`);
             const settingPrice =await PRICE_CONTRACT.createMockAggregator(tokenAddress, price,18);
+
             setSettingPrice(true) 
             console.log(`Loading - ${settingPrice.hash}`);
                  await settingPrice.wait();
