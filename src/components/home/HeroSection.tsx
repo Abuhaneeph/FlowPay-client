@@ -108,7 +108,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onPageChange }) => {
             </button>
             
             <a
-  href="https://youtu.be/d_bBNkPbcbg"
+  href=""
   target="_blank"
   rel="noopener noreferrer"
   className="inline-block border border-gray-300 text-gray-700 px-8 py-4 rounded-full font-semibold text-lg hover:border-orange-400 hover:text-orange-600 transition-colors duration-200"
