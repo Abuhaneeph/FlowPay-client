@@ -92,7 +92,7 @@ const Footer: React.FC<FooterProps> = ({ onPageChange }) => {
             
               </div>
               <p className="text-gray-400 mb-6 leading-relaxed">
-               Africa’s Stablecoin Gateway to the World, built on Lisk blockchain. 
+               Africa’s Stablecoin Gateway to the World, built on Morph blockchain. 
                Powering African Finance through De-Fi.
               </p>
               
@@ -218,7 +218,7 @@ const Footer: React.FC<FooterProps> = ({ onPageChange }) => {
                 </p>
                 <div className="flex items-center space-x-2 text-xs text-gray-500">
                   <span>Built on</span>
-                  <span className="text-blue-400 font-medium">Lisk</span>
+                  <span className="text-blue-400 font-medium">Morph</span>
                   <span>•</span>
                   <span>Secured by</span>
                   <span className="text-green-400 font-medium">Smart Contracts</span>

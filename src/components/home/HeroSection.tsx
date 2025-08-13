@@ -94,7 +94,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ onPageChange }) => {
           <p className="text-2xl md:text-3xl text-gray-600 mb-16 max-w-5xl mx-auto leading-relaxed font-light">
             Trade African stablecoins, join traditional savings groups, and access
             <span className="text-emerald-600 font-semibold"> global DeFi markets </span>
-            on the revolutionary Lisk blockchain platform.
+            on the revolutionary Morph blockchain platform.
           </p>
 
           {/* CTA Buttons - Fixed Navigation */}
